@@ -29,12 +29,7 @@ export default function Home() {
         console.log('error: ', err);
       }
     };
-    // ws.close();
-
-    // return () => {
-    //   ws.close();
-    // };
-  });
+  }, []);
 
   return (
     <>
