@@ -1,0 +1,19 @@
+@import 'styles/variables.module.scss';
+
+.exchange {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__price__down {
+    color: $red-color;
+  }
+
+  &__price__up {
+    color: $success-color;
+  }
+}

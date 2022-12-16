@@ -1,0 +1,19 @@
+@import 'styles/variables.module.scss';
+
+.selectFields {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0px;
+
+  &__exchangeSelector {
+    min-width: 150px;
+  }
+
+  & button {
+    background-color: $primary-color;
+    padding: 0px 12px;
+    height: 30px;
+  }
+}

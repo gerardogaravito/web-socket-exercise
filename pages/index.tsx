@@ -1,10 +1,41 @@
 import Head from 'next/head';
-import { Inter } from '@next/font/google';
 import styles from 'styles/Home.module.scss';
+import { useEffect, useState } from 'react';
+import WebSocket from 'isomorphic-ws';
+import { JSONPricesType } from 'types/prices.types';
 
-// const inter = Inter({ subsets: ['latin'] });
+import { SelectExchange, ExchangesContainer, SelectQuantity } from 'components';
 
 export default function Home() {
+  const [exchanges, setExchanges] = useState<JSONPricesType>([]);
+  const [selectedExchange, setSelectedExchange] = useState<string>('');
+  const [showQuantity, setShowQuantity] = useState<string>('');
+
+  const ws = new WebSocket('wss://wssx.gntapi.com:443');
+
+  useEffect(() => {
+    ws.onopen = () => {
+      ws.send('prices');
+    };
+
+    ws.onmessage = function (event: any) {
+      const json = JSON.parse(event.data);
+      try {
+        if ((json.event = 'data')) {
+          // setBids(json.data.bids.slice(0, 5));
+          setExchanges(json.prices);
+        }
+      } catch (err) {
+        console.log('error: ', err);
+      }
+    };
+    // ws.close();
+
+    // return () => {
+    //   ws.close();
+    // };
+  });
+
   return (
     <>
       <Head>
@@ -15,6 +46,25 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1>Visualizador de precios GNT</h1>
+
+        <SelectExchange
+          exchanges={exchanges}
+          setSelectedExchange={setSelectedExchange}
+          setShowQuantity={setShowQuantity}
+        />
+
+        <SelectQuantity
+          exchanges={exchanges}
+          setShowQuantity={setShowQuantity}
+        />
+
+        {exchanges && (
+          <ExchangesContainer
+            exchanges={exchanges}
+            selectedExchange={selectedExchange}
+            showQuantity={showQuantity}
+          />
+        )}
       </main>
     </>
   );
