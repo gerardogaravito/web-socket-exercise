@@ -1,0 +1,16 @@
+.exchangesContainer {
+  width: 300px;
+  display: grid;
+  margin-top: 24px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  &__ask {
+    grid-column: 2 / 3;
+    text-align: center;
+  }
+
+  &__bid {
+    grid-column: 3 / 4;
+    text-align: end;
+  }
+}
