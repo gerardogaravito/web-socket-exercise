@@ -2,7 +2,7 @@ import React, { FC, useMemo } from 'react';
 import Select from 'react-select';
 import styles from './selectExchange.module.scss';
 import { useFixExchangesToOptions } from 'hooks';
-import { ISelectExchange } from './SelectExchange.types';
+import { ISelectExchange } from './selectExchange.types';
 
 const SelectExchange: FC<ISelectExchange> = ({
   exchanges,
