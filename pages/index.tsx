@@ -22,7 +22,6 @@ export default function Home() {
       const json = JSON.parse(event.data);
       try {
         if ((json.event = 'data')) {
-          // setBids(json.data.bids.slice(0, 5));
           setExchanges(json.prices);
         }
       } catch (err) {
