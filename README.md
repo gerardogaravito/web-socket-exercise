@@ -2,6 +2,11 @@
 
 website url: https://web-socket-exercise.vercel.app/
 
+### Enter the nodes of your graph
+
+See if the price go down (red) or up (green)
+![](https://github.com/gerardogaravito/web-socket-exercise/blob/main/public/web-socket-exercise.png)
+
 ### Run the project
 
 - Clone the project
